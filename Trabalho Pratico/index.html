@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarManager - Gestão de Veículos e Manutenção</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="d-flex align-items-center">
+                    <img src="logo.jpg" alt="CarManager Logo" width="50" height="50"> <!-- Adicione uma imagem ao nome da app -->
+                    <span class="ml-3">CarManager</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto"> <!-- Alinhar à direita -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Página Inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="veiculos.html">Veículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Manutenção</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Histórico</a>
+                    </li>
+                </ul>
+            </div>
+            <button class="button-3" onclick="redirectToLogin()">Login / Registo</button>
+
+            <script>
+                function redirectToLogin() {
+                    window.location.href = "login.html";
+                }
+            </script>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="background">
+        <h1>Bem-vindo ao CarManager</h1>
+        <p>Sua solução completa de gestão de veículos e manutenção.</p>
+        <p>Gerencie veículos e mantenha um registro organizado de manutenções.</p>
+        <p>Compartilhe informações de forma colaborativa. </p>
+    </div>
+    
+ 
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarManager - Veículos</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <div class="d-flex align-items-center">
+                        <img src="logo.jpg" alt="CarManager Logo" width="50" height="50"> <!-- Adicione uma imagem ao nome da app -->
+                        <span class="ml-3">CarManager</span>
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto"> 
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Página Inicial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="veiculos.html">Veículos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Manutenção</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Histórico</a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="button-3" onclick="redirectToLogin()">Login / Registo</button>
+
+                <script>
+                    function redirectToLogin() {
+                        window.location.href = "login.html";
+                    }
+                </script>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-3">
+        <h2>Veículos</h2>
+
+        <div class="card-deck">
+            <div class="card">
+                <img src="r8.jpg" class="card-img-top">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Matrícula:</strong> ABC-123</li>
+                        <li class="list-group-item"><strong>Marca:</strong> Audi</li>
+                        <li class="list-group-item"><strong>Modelo:</strong> R8</li>
+                        <li class="list-group-item"><strong>Ano:</strong> 2020</li>
+                        <li class="list-group-item"><strong>KM:</strong> 30,000</li>
+                        <li class="list-group-item"><strong>Cor:</strong> Preto</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="red.jpg" class="card-img-top">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Matrícula:</strong> XYZ-789</li>
+                        <li class="list-group-item"><strong>Marca:</strong> Brand 2</li>
+                        <li class="list-group-item"><strong>Modelo:</strong> test</li>
+                        <li class="list-group-item"><strong>Ano:</strong> 2018</li>
+                        <li class="list-group-item"><strong>KM:</strong> 40,000</li>
+                        <li class="list-group-item"><strong>Cor:</strong> Red</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-4">
+            <button class="button-3" data-toggle="modal" data-target="#addVehicleModal">Adicionar Veículo</button>
+        </div>
+        <div class="modal" id="addVehicleModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Adicionar Veículo</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    
+                    <div class="modal-body">
+                        <form> 
+                            <div class="form-group">
+                                <label for="newVehicleMatricula">Matrícula:</label>
+                                <input type="text" class="form-control" id="newVehicleMatricula" placeholder="Digite a matrícula do veículo">
+                            </div>
+                            <div class="form-group">
+                                <label for="newVehicleMarca">Marca:</label>
+                                <input type="text" class="form-control" id="newVehicleMarca" placeholder="Digite a marca do veículo">
+                            </div>
+                            <div class="form-group">
+                                <label for="newVehicleModelo">Modelo:</label>
+                                <input type="text" class="form-control" id="newVehicleModelo" placeholder="Digite o modelo do veículo">
+                            </div>
+                            <div class="form-group">
+                                <label for="newVehicleAno">Ano:</label>
+                                <input type="text" class="form-control" id="newVehicleAno" placeholder="Digite o ano do veículo">
+                            </div>
+                            <div class="form-group">
+                                <label for="newVehicleKM">KM:</label>
+                                <input type="text" class="form-control" id="newVehicleKM" placeholder="Digite a quilometragem do veículo">
+                            </div>
+                            <div class="form-group">
+                                <label for="newVehicleCor">Cor:</label>
+                                <input type="text" class="form-control" id="newVehicleCor" placeholder="Digite a cor do veículo">
+                            </div>
+                            <div class="form-group">
+                                <label for="newVehicleImage">Imagem:</label>
+                                <input type="file" class="form-control-file" id="newVehicleImage">
+                            </div>
+
+                            <button type="submit" class="button-3"> Adicionar</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+

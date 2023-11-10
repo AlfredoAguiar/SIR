@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CarManager</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <div class="d-flex align-items-center">
+                        <img src="logo.jpg" alt="CarManager Logo" width="50" height="50"> <!-- Adicione uma imagem ao nome da app -->
+                        <span class="ml-3">CarManager</span>
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto"> 
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Página Inicial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="veiculos.html">Veículos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Manutenção</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Histórico</a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="button-3" onclick="redirectToLogin()">Login / Registo</button>
+
+                <script>
+                    function redirectToLogin() {
+                        window.location.href = "login.html";
+                    }
+                </script>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container login">
+        <div class="button-4">
+            <button type="button" class="button-3" onclick="showLoginForm()">Login</button>
+            <button type="button" class="button-3" onclick="showRegisterForm()">Registo</button>
+        </div>
+    
+        <form id="loginForm" >
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" class="form-control" id="username" placeholder="Digite seu nome de usuário">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+            </div>
+            <button type="submit" class="button-3">Entrar</button>
+        </form>
+    
+        <form id="registerForm" >
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" class="form-control" id="username" placeholder="Digite seu nome de usuário">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+            </div>
+           
+            <button type="submit" class="button-3">Registrar</button>
+        </form>
+    </main>
+    
+    <script>
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+        }
+    
+        function showRegisterForm() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
