@@ -15,7 +15,7 @@
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <div class="d-flex align-items-center">
-                        <img src="logo.jpg" alt="CarManager Logo" width="50" height="50"> <!-- Adicione uma imagem ao nome da app -->
+                        <img src="logo.jpg" alt="CarManager Logo" width="50" height="50"> 
                         <span class="ml-3">CarManager</span>
                     </div>
                 </a>
@@ -31,20 +31,14 @@
                             <a class="nav-link" href="veiculos.html">Veículos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Manutenção</a>
+                            <a class="nav-link" href="manuten.html">Serviços</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Histórico</a>
+                            <a class="nav-link" href="#">Informações/Matrícula</a>
                         </li>
                     </ul>
                 </div>
-                <button class="button-3" onclick="redirectToLogin()">Login / Registo</button>
-
-                <script>
-                    function redirectToLogin() {
-                        window.location.href = "login.html";
-                    }
-                </script>
+                <button class="button-3" data-toggle="modal" data-target="#loginModal">Login / Registo</button>
             </div>
         </nav>
     </header>

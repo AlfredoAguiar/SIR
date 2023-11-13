@@ -15,7 +15,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <div class="d-flex align-items-center">
-                    <img src="logo.jpg" alt="CarManager Logo" width="50" height="50"> <!-- Adicione uma imagem ao nome da app -->
+                    <img src="logo.jpg" alt="CarManager Logo" width="50" height="50">
                     <span class="ml-3">CarManager</span>
                 </div>
             </a>
@@ -23,28 +23,22 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto"> <!-- Alinhar à direita -->
+                <ul class="navbar-nav ml-auto"> 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Página Inicial</a>
+                        <a class="nav-link" href="index.html">Página Inicial</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="veiculos.html">Veículos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Manutenção</a>
+                        <a class="nav-link" href="manuten.html">Serviços</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Histórico</a>
+                        <a class="nav-link" href="#">Informações/Matrícula</a>
                     </li>
                 </ul>
             </div>
-            <button class="button-3" onclick="redirectToLogin()">Login / Registo</button>
-
-            <script>
-                function redirectToLogin() {
-                    window.location.href = "login.html";
-                }
-            </script>
+            <button class="button-3" data-toggle="modal" data-target="#loginModal">Login / Registo</button>
         </div>
     </nav>
 
@@ -52,10 +46,122 @@
     <div class="background">
         <h1>Bem-vindo ao CarManager</h1>
         <p>Sua solução completa de gestão de veículos e manutenção.</p>
-        <p>Gerencie veículos e mantenha um registro organizado de manutenções.</p>
-        <p>Compartilhe informações de forma colaborativa. </p>
+        <p>Menu de navegação Bootstrap com links e um botão 'Login / Registo' à direita. Quando o botão é clicado, ele redireciona para a página que possibilita o login ou registo. Após efetuar o login, esse botão é substituído por um que leva ao perfil, onde é possível adicionar ou editar informações."</p>
+        <p>Depois do login, no menu tem-se acesso a uma barra de Navegação, onde se pode aceder a "Veículos", "Serviços" e "Informações/Matrícula"</p>
+        <p>Na página principal, haverá uma breve descrição da aplicação.</p>
+        <p>Em serviços, será possível visualizar todos os tipos de manutenções agendadas ou já efetuadas, assim como detalhes das mesmas. Além disso, é possível pesquisar serviços de um veículo específico através da matrícula. </p>
+        <p>Em veículos, será possível visualizar todos os veículos relacionados com o utilizador. Haverá um botão para adicionar veículos, e será possível selecionar o veículo para aceder a opções como: editar, visualizar detalhes adicionais sobre o veículo, criar serviços específicos e compartilhar o veículo com outros utilizadores. Isso permitirá que outros utilizadores vejam os serviços relacionados ao mesmo veículo.</p>
+        <p>Por último, haverá a página "Informações/Matrícula", onde será possível introduzir uma matrícula. A partir de um site terceiro, serão apresentadas todas as informações relacionadas a esse veículo, como por exemplo: cilindrada do veiculo, ano de registo, kilometragem, potencia, entre outros.</p>
+        <p>Alfredo Aguiar, Ricardo Conde </p>
+     </div>
+
+    <!--Login-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulário Login -->
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="username">Nome de utilizador:</label>
+                            <input type="text" class="form-control" id="username" placeholder="Insira seu nome de utilizador" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Palavra-passe:</label>
+                            <input type="password" class="form-control" id="password" placeholder="Insira a sua palavra-passe" required>
+                        </div>
+                        <button type="submit" class="button-3">Entrar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p>Não tem uma conta? <a href="#" onclick="showRegistrationModal()">Regista-te aqui</a>.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    
- 
+
+    <!--Registo-->
+    <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registrationModalLabel">Registo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulário Registo -->
+                    <form id="registrationForm" onsubmit="handleRegistration(event)">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstName">Nome:</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Insira seu Nome" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastName">Apelido:</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Insira seu Apelido" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Nome de Utilizador:</label>
+                            <input type="text" class="form-control" id="username" placeholder="Escolha seu nome de utilizador" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Insira seu email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">Nova palavra-passe:</label>
+                            <input type="password" class="form-control" id="newPassword" placeholder="Escolha a sua palavra-passe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar palavra-passe:</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a sua palavra-passe" required>
+                        </div>
+                        <button type="submit" class="button-3">Registar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p>Já tem uma conta? <a href="#" onclick="showLoginModal()">Faça login aqui</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function showRegistrationModal() {
+            $('#loginModal').modal('hide');
+            $('#registrationModal').modal('show');
+        }
+
+        function showLoginModal() {
+            $('#registrationModal').modal('hide');
+            $('#loginModal').modal('show');
+        }
+
+        function handleLogin(event) {
+           
+            window.location.href = "pagina-inicial.html";
+
+            event.preventDefault();
+        }
+
+        function handleRegistration(event) {
+            $('#registrationModal').modal('hide');
+            $('#loginModal').modal('show');
+            event.preventDefault();
+        }
+    </script>
 </body>
 </html>
