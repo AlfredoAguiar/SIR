@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarManager - Manutenções</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <div class="d-flex align-items-center">
+                        <img src="../logo.jpg" alt="CarManager Logo" width="50" height="50">
+                        <span class="ml-3">CarManager</span>
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="../index.html">Página Inicial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../veiculos.html">Veículos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="manuten.html">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../info/info.php">Veículos-user</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="button-3" onclick="location.href='../logout.php'">Sair</button>
+                        </li>
+        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-3">
+        <h2>Serviços</h2>
+   <!--      <div>
+             <label for="matriculaSearch">Pesquisar por Matrícula:</label>
+             <input type="text" id="matriculaSearch" placeholder="Digite a Matrícula">
+            <button onclick="searchByMatricula()">Pesquisar</button>
+        </div>´-->
+        <div id="ServiçosContainer"></div>
+
+        <main class="container mt-3">
+            <div id="ServiçosContent">
+
+            </div>
+
+            <div class="button-4">
+                <button class="button-3" data-toggle="modal" data-target="#addVehicleModal">Adicionar Serviços</button>
+            </div>
+            <div class="modal" id="addVehicleModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title">Adicionar Serviços</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form id="ServiçosForm" action="Serviços.php" method="post" enctype="multipart/form-data" onsubmit="handleAddServico(event)">
+                                <div>
+                                    <label for="carMatricula">Matrícula do Carro:</label>
+                                    <select name="carMatricula" id="carMatricula" required></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipoServico">Tipo de serviço:</label>
+                                    <select name="tipoServico" id="tipoServico" onchange="updatePrice()" required>
+                                        <option value="mudarOleo">Mudar o Óleo</option>
+                                        <option value="trocarPneus">Trocar Pneus</option>
+                                        <option value="reparacaoMotor">Reparação do Motor</option>
+                                        <option value="alinhamentoDirecao">Alinhamento da Direção</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dataServico">Data:</label>
+                                    <input type="date" name="dataServico" id="dataServico" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="observacoes">Observações:</label>
+                                    <textarea name="observacoes" id="observacoes"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="preco">Preço:</label>
+                                    <span id="preco">Ainda não disponível</span>
+                                    <input type="hidden" name="preco" id="precoInput" value="Ainda não disponível">
+                                </div>
+                                <button type="submit" class="button-3">Adicionar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="scripts_m.js"></script>
+    </body>
+</html>

@@ -6,7 +6,7 @@
     <title>CarManager - Veículos</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- arquivo CSS -->
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,14 +31,16 @@
                             <a class="nav-link" href="veiculos.html">Veículos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="manuten.html">Serviços</a>
+                            <a class="nav-link" href="Serviços/manuten.html">Serviços</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Informações/Matrícula</a>
+                            <a class="nav-link" href="info/info.php">Veículos-user</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="button-3" onclick="location.href='logout.php'">Sair</button>
                         </li>
                     </ul>
                 </div>
-                <button class="button-3" data-toggle="modal" data-target="#loginModal">Login / Registo</button>
             </div>
         </nav>
     </header>
@@ -46,93 +48,75 @@
     <main class="container mt-3">
         <h2>Veículos</h2>
 
-        <div class="card-deck">
-            <div class="card">
-                <img src="r8.jpg" class="card-img-top">
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Matrícula:</strong> ABC-123</li>
-                        <li class="list-group-item"><strong>Marca:</strong> Audi</li>
-                        <li class="list-group-item"><strong>Modelo:</strong> R8</li>
-                        <li class="list-group-item"><strong>Ano:</strong> 2020</li>
-                        <li class="list-group-item"><strong>KM:</strong> 30,000</li>
-                        <li class="list-group-item"><strong>Cor:</strong> Preto</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="red.jpg" class="card-img-top">
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Matrícula:</strong> XYZ-789</li>
-                        <li class="list-group-item"><strong>Marca:</strong> Brand 2</li>
-                        <li class="list-group-item"><strong>Modelo:</strong> test</li>
-                        <li class="list-group-item"><strong>Ano:</strong> 2018</li>
-                        <li class="list-group-item"><strong>KM:</strong> 40,000</li>
-                        <li class="list-group-item"><strong>Cor:</strong> Red</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
+        <div id="veiculosContainer"></div>
+    
         <div class="button-4">
             <button class="button-3" data-toggle="modal" data-target="#addVehicleModal">Adicionar Veículo</button>
         </div>
         <div class="modal" id="addVehicleModal">
             <div class="modal-dialog">
                 <div class="modal-content">
-
+        
                     <div class="modal-header">
                         <h4 class="modal-title">Adicionar Veículo</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-
-                    
+        
                     <div class="modal-body">
-                        <form> 
+                        <form id="veiculosForm" action="veiculos.php" method="post" enctype="multipart/form-data" onsubmit="handleAddVehicle(event)">
                             <div class="form-group">
                                 <label for="newVehicleMatricula">Matrícula:</label>
-                                <input type="text" class="form-control" id="newVehicleMatricula" placeholder="Digite a matrícula do veículo">
+                                <input type="text" class="form-control" name="newVehicleMatricula" placeholder="Digite a matrícula do veículo" required>
                             </div>
                             <div class="form-group">
                                 <label for="newVehicleMarca">Marca:</label>
-                                <input type="text" class="form-control" id="newVehicleMarca" placeholder="Digite a marca do veículo">
+                                <input type="text" class="form-control" name="newVehicleMarca" placeholder="Digite a marca do veículo" required>
                             </div>
                             <div class="form-group">
                                 <label for="newVehicleModelo">Modelo:</label>
-                                <input type="text" class="form-control" id="newVehicleModelo" placeholder="Digite o modelo do veículo">
+                                <input type="text" class="form-control" name="newVehicleModelo" placeholder="Digite o modelo do veículo" required>
                             </div>
-                            <div class="form-group">
-                                <label for="newVehicleAno">Ano:</label>
-                                <input type="text" class="form-control" id="newVehicleAno" placeholder="Digite o ano do veículo">
-                            </div>
+                                <div class="form-group">
+                                    <label for="newVehicleAno">Ano:</label>
+                                    <input type="text" class="form-control" name="newVehicleAno" id="newVehicleAno" placeholder="Digite o ano do veículo" required>
+                                </div>
                             <div class="form-group">
                                 <label for="newVehicleKM">KM:</label>
-                                <input type="text" class="form-control" id="newVehicleKM" placeholder="Digite a quilometragem do veículo">
+                                <input type="text" class="form-control" name="newVehicleKM" placeholder="Digite a quilometragem do veículo" required>
                             </div>
                             <div class="form-group">
                                 <label for="newVehicleCor">Cor:</label>
-                                <input type="text" class="form-control" id="newVehicleCor" placeholder="Digite a cor do veículo">
+                                <select class="form-control" name="newVehicleCor" required>
+                                    <option value="red">Vermelho</option>
+                                    <option value="orange">Laranja</option>
+                                    <option value="yellow">Amarelo</option>
+                                    <option value="green">Verde</option>
+                                    <option value="blue">Azul</option>
+                                    <option value="purple">Roxo</option>
+                                    <option value="pink">Rosa</option>
+                                    <option value="brown">Marrom</option>
+                                    <option value="gray">Cinza</option>
+                                    <option value="black">Preto</option>
+                                    <option value="white">Branco</option>
+                                    <option value="white">Outro</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="newVehicleImage">Imagem:</label>
-                                <input type="file" class="form-control-file" id="newVehicleImage">
+                                <input type="file" class="form-control-file" name="newVehicleImage" required>
                             </div>
-
-                            <button type="submit" class="button-3"> Adicionar</button>
+                        
+                            <button type="submit" class="button-3">Adicionar</button>
                         </form>
                     </div>
-
+        
                 </div>
             </div>
         </div>
-
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
 
 </body>
 </html>
-
-

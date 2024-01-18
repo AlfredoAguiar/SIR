@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
-    <!-- arquivo CSS -->
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,10 +31,10 @@
                         <a class="nav-link" href="veiculos.html">Veículos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="manuten.html">Serviços</a>
+                        <a class="nav-link" href="Serviços/manuten.html">Serviços</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Informações/Matrícula</a>
+                        <a class="nav-link" href="info/info.php">Veículos-user</a>
                     </li>
                 </ul>
             </div>
@@ -42,17 +42,16 @@
         </div>
     </nav>
 
-    <!-- Conteúdo Principal -->
+    
     <div class="background">
         <h1>Bem-vindo ao CarManager</h1>
         <p>Sua solução completa de gestão de veículos e manutenção.</p>
-        <p>Menu de navegação Bootstrap com links e um botão 'Login / Registo' à direita. Quando o botão é clicado, ele redireciona para a página que possibilita o login ou registro. Após efetuar o login, esse botão é substituído por um que leva ao perfil, onde é possível adicionar ou editar informações."</p>
-        <p>Depois do login, no menu precem Links de Navegação:links para " "Veículos" "Serviços" e "Informações/Matrícula"</p>
+        <p>Menu de navegação Bootstrap com links e um botão 'Login / Registo' à direita. Quando o botão é clicado, ele redireciona para a página que possibilita o login ou registo. Após efetuar o login, esse botão é substituído por um que leva ao perfil, onde é possível adicionar ou editar informações."</p>
+        <p>Depois do login, no menu tem-se acesso a uma barra de Navegação, onde se pode aceder a "Veículos", "Serviços" e "Informações/Matrícula"</p>
         <p>Na página principal, haverá uma breve descrição da aplicação.</p>
-        <p>Em serviços, será possível visualizar todos os tipos de manutenções agendadas ou já efetuadas, assim como detalhes sobre tais serviços. Além disso, é possível pesquisar serviços de um veículo específico através da matrícula. </p>
-        <p>Em veículos, será possível visualizar todos os veículos relacionados ao utilizador. Haverá um botão para adicionar veículos, e será possível clicar nos veículos para acessar opções como editar, visualizar detalhes adicionais sobre o veículo, criar serviços específicos para ele, e também compartilhar o veículo com outros utilizadores. Isso permitirá que outros utilizadores vejam os serviços relacionados ao mesmo veículo.</p>
-        <p>Por último, haverá a página "Informações/Matrícula", onde será possível introduzir uma matrícula. A partir de um site terceiro, serão apresentadas todas as informações relacionadas a esse veículo.</p>
-        <p>Alfredo Aguiar, Ricardo Conde </p>
+        <p>Em serviços, será possível visualizar todos os tipos de manutenções agendadas ou já efetuadas, assim como detalhes das mesmas. Além disso, é possível pesquisar serviços de um veículo específico através da matrícula. </p>
+        <p>Em veículos, será possível visualizar todos os veículos relacionados com o utilizador. Haverá um botão para adicionar veículos, e será possível selecionar o veículo para aceder a opções como: editar, visualizar detalhes adicionais sobre o veículo, criar serviços específicos e compartilhar o veículo com outros utilizadores. Isso permitirá que outros utilizadores vejam os serviços relacionados ao mesmo veículo.</p>
+        <p>Alfredo Aguiar</p>
      </div>
 
     <!--Login-->
@@ -66,8 +65,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Formulário Login -->
-                    <form id="loginForm" onsubmit="handleLogin(event)">
+                    <form id="loginForm" action="login.php" method="post" onsubmit="handleLogin(event)">
                         <div class="form-group">
                             <label for="username">Nome de utilizador:</label>
                             <input type="text" class="form-control" id="username" placeholder="Insira seu nome de utilizador" required>
@@ -97,33 +95,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Formulário Registo -->
-                    <form id="registrationForm" onsubmit="handleRegistration(event)">
+
+                    <form id="registrationForm" action="register.php" method="post" onsubmit="handleRegistration(event)">
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="firstName">Nome:</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Insira seu Nome" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="lastName">Apelido:</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Insira seu Apelido" required>
-                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="username">Nome de Utilizador:</label>
-                            <input type="text" class="form-control" id="username" placeholder="Escolha seu nome de utilizador" required>
+                            <label for="user">Nome de Utilizador:</label>
+                            <input type="text" class="form-control" name="user" placeholder="Escolha seu nome de utilizador" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" placeholder="Insira seu email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="newPassword">Nova palavra-passe:</label>
-                            <input type="password" class="form-control" id="newPassword" placeholder="Escolha a sua palavra-passe" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirmar palavra-passe:</label>
-                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a sua palavra-passe" required>
+                            <label for="newPassword">Palavra-passe:</label>
+                            <input type="password" class="form-control" name="password" placeholder="Escolha a sua palavra-passe" required>
                         </div>
                         <button type="submit" class="button-3">Registar</button>
                     </form>
@@ -138,30 +120,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script>
-        function showRegistrationModal() {
-            $('#loginModal').modal('hide');
-            $('#registrationModal').modal('show');
-        }
-
-        function showLoginModal() {
-            $('#registrationModal').modal('hide');
-            $('#loginModal').modal('show');
-        }
-
-        function handleLogin(event) {
-           
-            window.location.href = "pagina-inicial.html";
-
-            event.preventDefault();
-        }
-
-        function handleRegistration(event) {
-            $('#registrationModal').modal('hide');
-            $('#loginModal').modal('show');
-            event.preventDefault();
-        }
-    </script>
+    <script src="scripts.js"></script>
+    
 </body>
 </html>

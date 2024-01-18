@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Vehicle</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Editar Veiculo</h2>
+    <form action="upd_vec.php" method="post">
+        <input type="hidden" name="matricula" value="<?= $car['Matrícula'] ?>" class="form-control">
+
+        <div class="form-group">
+            <label for="newVehicleMarca">Marca:</label>
+            <input type="text" name="newVehicleMarca" value="<?= $car['Marca'] ?>" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="newVehicleModelo">Modelo:</label>
+            <input type="text" name="newVehicleModelo" value="<?= $car['Modelo'] ?>" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="newVehicleAno">Ano:</label>
+            <input type="text" name="newVehicleAno" value="<?= $car['Ano'] ?>" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="newVehicleKM">KM:</label>
+            <input type="text" name="newVehicleKM" value="<?= $car['KM'] ?>" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="newVehicleCor">Cor:</label>
+            <input type="text" name="newVehicleCor" value="<?= $car['Cor'] ?>" class="form-control" required>
+        </div>
+
+        <button type="submit" class="button-3">Salvar</button>
+        <button type="button" class="button-3" onclick="navigateToPage()">Voltar</button>
+    </form>
+</div>
+<script src="scripts.js"></script>
+
+</body>
+</html>

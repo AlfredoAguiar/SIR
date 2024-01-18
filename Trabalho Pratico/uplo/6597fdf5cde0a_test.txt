@@ -1,0 +1,115 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Leitor {
+    private String nome;
+    private int idade;
+    private Map<Integer, Requisicao> reqs;
+
+    public Leitor(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+        this.reqs = new HashMap<>();
+    }
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public Map<Integer, Requisicao> getReqs() {
+        return reqs;
+    }
+}
+    
+
+public void adicionarRequisicao(int numeroRequisicao, Requisicao requisicao) throws RequisicaoException {
+        if (reqs.containsKey(numeroRequisicao)) {
+            throw new RequisicaoException("Número de Requisição já existe: " + numeroRequisicao);
+        }
+        reqs.put(numeroRequisicao, requisicao);
+    }
+
+
+public class RequisicaoException extends Exception {
+    public RequisicaoException(String msg) {
+        super(msg);
+    }
+}
+
+public int quantidadeTotalReferencias() {
+        int total = 0;
+
+        for (Requisicao requisicao : reqs.values()) {
+            if (requisicao.getDataFimReal() == null) {
+                total++;
+            }
+        }
+
+        return total;
+    }
+
+
+ public Requisicao requisicaoMaiorMulta() {
+        Requisicao maiorMulta = null;
+        double valorMaiorMulta = 0.0;
+
+        for (Requisicao requisicao : reqs.values()) {
+            double valorMulta = requisicao.calcularValorMulta(); 
+
+            if (valorMulta > valorMaiorMulta) {
+                valorMaiorMulta = valorMulta;
+                maiorMulta = requisicao;
+            }
+        }
+
+        return maiorMulta;
+    }
+
+public void removerRequisicoesPorData(String data) {
+        Iterator<Map.Entry<Integer, Requisicao>> iterator = reqs.entrySet().iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, Requisicao> entry = iterator.next();
+            Requisicao requisicao = entry.getValue();
+
+            if (data.equals(requisicao.getData())) {
+                iterator.remove();
+            }
+        }
+    }public class MainClass {
+    public static void main(String[] args) {
+        // Criar uma variável de instância de Leitor.
+        Leitor leitor = new Leitor("Nome do Leitor", 25);
+
+        // Adicionar uma requisição a esse leitor.
+        Requisicao requisicao1 = new Requisicao(/* pass appropriate parameters */);
+        leitor.adicionarRequisicao(1, requisicao1);
+
+        // Acrescentar uma nova referência bib. à requisição criada.
+        ReferenciaBibliografica referencia1 = new ReferenciaBibliografica(/* pass appropriate parameters */);
+        requisicao1.adicionarReferencia(referencia1);
+
+        // Acrescentar uma nova referência bib. diferente, à requisição criada.
+        ReferenciaBibliografica referencia2 = new ReferenciaBibliografica(/* pass appropriate parameters */);
+        requisicao1.adicionarReferencia(referencia2);
+
+        // Imprimir para o ecrã a quantidade total de referências requisitadas pelo leitor.
+        int totalReferencias = leitor.quantidadeTotalReferencias();
+        System.out.println("Quantidade total de referências requisitadas pelo leitor: " + totalReferencias);
+
+        // Imprimir para o ecrã os dados da requisição do leitor que pagou maior valor em multas.
+        Requisicao maiorMulta = leitor.requisicaoMaiorMulta();
+        if (maiorMulta != null) {
+            System.out.println("Dados da requisição com maior valor em multas:");
+            System.out.println("Número da Requisição: " + maiorMulta.getNumeroRequisicao());
+            // Print other relevant information from the Requisicao class
+        } else {
+            System.out.println("O leitor não possui requisições com multas.");
+        }
+    }
+}
